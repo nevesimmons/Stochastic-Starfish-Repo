@@ -1,16 +1,17 @@
 %parameters for euler maryama program 
-T = 1; N = 100; dt = T/N;
+T = 50; N = 1000; dt = T/N;
 
 %discretizing Brownian motion stuff - got from AAITNSOSDE
 dW = sqrt(dt)*randn(1,N); 
 W = cumsum(dW); 
-L = N; Dt = R*dt;
-c = 9;
+L = N; 
+Dt = R*dt;
+c = 0.01;
 
-tlist = linspace(0,500,L);
+tlist = linspace(0,50,L);
 xlist = zeros(1,L);
 
-x0 = -0.0005;
+x0 = 0.5;
 xj = x0;
 xlist(:,1) = xj;
 for j=1:L-1 
@@ -22,5 +23,11 @@ for j=1:L-1
 end
 
 close all
-plot(tlist,xlist)
-  
+plot(tlist,xlist,'LineWidth',1.5)
+hold on;
+xlabel('time');
+ylabel('x(t)');
+title('Euler Maryama method to show relationship between time and X(t)');
+set(gca,'FontSize',15);
+
+
